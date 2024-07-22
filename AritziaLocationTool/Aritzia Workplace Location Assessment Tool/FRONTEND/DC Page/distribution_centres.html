@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map Selection</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select a Point on the Map</h1>
+    <div id="map"></div>
+    <p>Selected Coordinates: <span id="coordinates"></span></p>
+
+    <script>
+        function initMap() {
+            // Initialize the map
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 0, lng: 0},
+                zoom: 2
+            });
+
+            // Add a click event listener to the map
+            map.addListener('click', function(event) {
+                // Get the clicked coordinates
+                var lat = event.latLng.lat();
+                var lng = event.latLng.lng();
+
+                // Display the coordinates on the page
+                document.getElementById('coordinates').textContent = lat + ', ' + lng;
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEVMMBIjhk05WmXezmIlrBlg7IuhT3vzg&callback=initMap" async defer></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribution Centres</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<header class="my-info">
+    <div class="my-info__text">
+        Made by Aden Ahmed | aahmed@aritzia.com
+    </div>
+</header>
+<body id="distribution-centre-results-page">
+    <div class="background-video">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='images/AritziaDC.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('views.home') }}">
+                <img src="{{ url_for('static', filename='images/Aritzia.png') }}" alt="Aritzia Logo" class="logo__img">
+            </a>
+        </div>
+        <nav class="nav">
+            <a href="#" class="nav__link">For Distribution Centres</a>
+            <a href="#" class="nav__link">For Boutiques</a>
+            <a href="#" class="nav__link">For A-OK Cafes</a>
+        </nav>
+    </header>
+    <div class="page-label">
+        Distribution Centres
+    </div>
+    <div class="content">
+        <div class="wrapper">
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head1">
+                <label for="collapsible-head1">How Does This Work?</label>
+                <div class="collapsible-text">
+                    <h2>For Distribution Centres</h2>
+                    <p>
+                        This tool serves as a valuable aid in your decision-making process when
+                        scouting a new location for a distribution center. By leveraging data-driven
+                        insights, it equips you with essential information to facilitate an informed
+                        and strategic decision. Wheather you're evaluating potential sites based on
+                        logistical efficiency, market access, or risk to staff, this tool provides
+                        the necessary analytics to guide your location selection process effectively.
+                    </p>
+                </div>
+            </div>
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head2">
+                <label for="collapsible-head2">What Do We Hope To Achieve?</label>
+                <div class="collapsible-text">
+                    <h2>Strategic Clarity</h2>
+                    <p>
+                        This platform is designed to illuminate the overarching objectives guiding Aritzia's
+                        strategic decision-making process. By articulating aspirations and desired outcomes,
+                        we establish a clear roadmap for success. Wheather aiming to optimize operational
+                        efficiency, enhance customer and employee satisfaction, or drive sustainable growth
+                        in the retail landscape, defining our goals empower us to align strategies, prioritize
+                        initiatives, and measure progress effectively. This tool can help us explore Aritzia's
+                        mission, vision, and strategic objectives to understand the transformative impact we
+                        aim to achieve.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <div id="instruction">
+                To Begin, Select A Point On The Map.
+            </div>
+            <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
+            <div id="map"></div>
+            <div id="savedLocation" style="background-color: white; padding: 10px;"></div>
+            <a href="#results" class="get-started">Get Started</a>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEVMMBIjhk05WmXezmIlrBlg7IuhT3vzg&callback=initMap&libraries=places"
+                type="text/javascript"></script>
+        </div>
+    </div>
+<div class="location-results">
+    <div id="results">
+        <div class="results-title">
+            <h2>Results</h2>
+        </div>
+
+        <div class="results-container">
+            <div class="result-item">
+                <h3>Coordinates</h3>
+                <p>Latitude: {{ result.Coordinates.latitude }}</p>
+                <p>Longitude: {{ result.Coordinates.longitude }}</p>
+            </div>
+
+            <div class="result-item">
+                <h3>Safety & Security Data</h3>
+                <p>Selected Area: {{ result['Safety & Security Data']['Neighborhood'] }}</p>
+                <p>Total Crimes in 2023: {{ result['Safety & Security Data']['Total Crimes in 2023'] }}</p>
+                <p>Population in 2023: {{ result['Safety & Security Data']['Population in 2023'] }}</p>
+                <p>Crime Rate in 2023 per 100,000 people: {{ result['Safety & Security Data']['Crime Rate in 2023 per 100,000 people'] }}</p>
+            </div>
+
+            {% if result['Technology Infrastructure'] %}
+            <div class="result-item">
+                <h3>Technology Infrastructure</h3>
+                <p>Score: {{ result['Technology Infrastructure'].score }}</p>
+                <p>Internet Providers: {{ result['Technology Infrastructure'].internet_providers | join(", ") }}</p>
+                <p>Urbanization Level: {{ result['Technology Infrastructure'].urbanization_level }}</p>
+            </div>
+            {% endif %}
+
+            {% if result['Nearby Public Bus Stops'] %}
+            <div class="result-item">
+                <h3>Public Bus Stops</h3>
+                {% for stop, distance in result['Public Bus Stops'] %}
+                    <p>Bus Stop: {{ stop }}, Distance: {{ distance }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if result['Airport Accessibility'] %}
+            <div class="result-item">
+                <h3>Airport Accessibility</h3>
+                <p>Drive Distance: {{ result['Airport Accessibility']['Drive Distance'] }}</p>
+                {% for eta in result['Airport Accessibility']['ETAs'] %}
+                    {% for time, eta_value in eta.items() %}
+                        <p>{{ time }}: {{ eta_value }}</p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="result-item">
+                <p>{{ result['Airport Accessibility']['message'] }}</p>
+            </div>
+            {% endif %}
+
+            {% if result['Community Amenities'] %}
+                <div class="result-item">
+                    <h3>Hotels</h3>
+                    {% for hotel in result['Community Amenities']['Hotels'] %}
+                        <p>Name: {{ hotel['Name'] }}</p>
+                        <p>Rating: {{ hotel['Rating'] }}</p>
+                        <p>Distance: {{ hotel['Distance'] }}</p>
+                        <p>Driving Time: {{ hotel['Driving Time'] }}</p>
+                    {% endfor %}
+                </div>
+
+                <div class="result-item">
+                    <h3>Restaurants</h3>
+                    {% for restaurant in result['Community Amenities']['Restaurants'] %}
+                        <p>Name: {{ restaurant['Name'] }}</p>
+                        <p>Rating: {{ restaurant['Rating'] }}</p>
+                        <p>Distance: {{ restaurant['Distance'] }}</p>
+                        <p>Driving Time: {{ restaurant['Driving Time'] }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if result['Nearest Emergency Locations'] %}
+            <div class="result-item">
+                <h3>Nearest Emergency Locations</h3>
+                <p>Nearest Hospital: {{ result['Nearest Emergency Locations']['Nearest Hospital'].name }}</p>
+                <p>Location: {{ result['Nearest Emergency Locations']['Nearest Hospital'].vicinity }}</p>
+                <p>Distance: {{ result['Nearest Emergency Locations']['Nearest Hospital'].distance_km }} kilometres</p>
+                <p>Nearest Fire Station: {{ result['Nearest Emergency Locations']['Nearest Fire Station'].name }}</p>
+                <p>Location: {{ result['Nearest Emergency Locations']['Nearest Fire Station'].vicinity }}</p>
+                <p>Distance: {{ result['Nearest Emergency Locations']['Nearest Fire Station'].distance_km }} kilometres</p>
+                <p>Nearest Police Station: {{ result['Nearest Emergency Locations']['Nearest Police Station'].name }}</p>
+                <p>Location: {{ result['Nearest Emergency Locations']['Nearest Police Station'].vicinity }}</p>
+                <p>Distance: {{ result['Nearest Emergency Locations']['Nearest Police Station'].distance_km }} kilometres</p>
+            </div>
+            {% endif %}
+
+            {% if result['Geological Risk'] %}
+            <div class="result-item">
+                <h3>Geological Risk</h3>
+                {% for season, precipitation in result['Geological Risk'].items() %}
+                    <p>{{ season }}: {{ precipitation }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="/static/distribution-centres.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</div>
+</body>
+</html>

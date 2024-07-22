@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribution Centres</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<header class="my-info">
+    <div class="my-info__text">
+        Made by Aden Ahmed | aahmed@aritzia.com
+    </div>
+</header>
+<body id="distribution-centre-page">
+    <div class="background-video">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='images/AritziaDC.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('views.home') }}">
+                <img src="{{ url_for('static', filename='images/Aritzia.png') }}" alt="Aritzia Logo" class="logo__img">
+            </a>
+        </div>
+        <nav class="nav">
+            <a href="#" class="nav__link">For Distribution Centres</a>
+            <a href="#" class="nav__link">For Boutiques</a>
+            <a href="#" class="nav__link">For A-OK Cafes</a>
+        </nav>
+    </header>
+    <div class="page-label">
+        Distribution Centres
+    </div>
+    <div class="content">
+        <div class="wrapper">
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head1">
+                <label for="collapsible-head1">How Does This Work?</label>
+                <div class="collapsible-text">
+                    <h2>For Distribution Centres</h2>
+                    <p>
+                        This tool serves as a valuable aid in your decision-making process when
+                        scouting a new location for a distribution center. By leveraging data-driven
+                        insights, it equips you with essential information to facilitate an informed
+                        and strategic decision. Wheather you're evaluating potential sites based on
+                        logistical efficiency, market access, or risk to staff, this tool provides
+                        the necessary analytics to guide your location selection process effectively.
+
+                    </p>
+                </div>
+            </div>
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head2">
+                <label for="collapsible-head2">What Do We Hope To Achieve?</label>
+                <div class="collapsible-text">
+                    <h2>Strategic Clarity</h2>
+                    <p>
+                        This platform is designed to illuminate the overarching objectives guiding Aritzia's
+                        strategic decision-making process. By articulating aspirations and desired outcomes,
+                        we establish a clear roadmap for success. Weather aiming to optimize operational
+                        efficiency, enhance customer and employee satisfaction, or drive sustainable growth
+                        in the retail landscape, defining our goals empower us to align strategies, prioritize
+                        initiatives, and measure progress effectively. This tool can help us explore Aritzia's
+                        mission, vision, and strategic objectives to understand the transformative impact we
+                        aim to achieve.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <div id="instruction">
+                To Begin, Select A Point On The Map.
+            </div>
+            <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
+            <div id="map"></div>
+            <div id="savedLocation" style="background-color: white; padding: 10px;"></div>
+            <a href="{{ url_for('views.distribution_centres_results') }}#results" class="get-started-coordinates">Get Started</a>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEVMMBIjhk05WmXezmIlrBlg7IuhT3vzg&callback=initMap&libraries=places"
+                type="text/javascript"></script>
+        </div>
+    </div>
+
+
+    <script src="/static/distribution-centres.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>

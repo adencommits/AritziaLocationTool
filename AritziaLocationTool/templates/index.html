@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aritzia Location Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<header class="my-info">
+    <div class="my-info__text">
+        Made by Aden Ahmed | aahmed@aritzia.com
+    </div>
+</header>
+<body id="main-page">
+    <div class="background-video">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='images/AritziaVid.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('views.home') }}">
+                <img src="{{ url_for('static', filename='images/Aritzia.png') }}" alt="Aritzia Logo" class="logo__img">
+            </a>
+        </div>
+        <nav class="nav">
+            <a href="{{ url_for('views.distribution_centres') }}" class="nav__link">For Distribution Centres</a>
+            <a href="{{ url_for('views.boutiques') }}" class="nav__link">For Boutiques</a>
+            <a href="#" class="nav__link">For A-OK Cafes</a>
+        </nav>
+    </header>
+
+    <div class="content-container">
+
+    <div class="big-title">
+        Workplace Location Planner
+    </div>
+    <a href="#Categories" class="get-started">Get Started</a> <!-- Add this line -->
+    <div id="Categories" class="categories-section">
+            <a href="{{ url_for('views.distribution_centres') }}" class="category">
+                <video autoplay loop muted playsinline>
+                    <source src="{{ url_for('static', filename='images/AritziaDC.mp4') }}" type="video/mp4">
+                </video>
+                <div class="category-text">Distribution Centers</div>
+            </a>
+            <a href="{{ url_for('views.boutiques') }}" class="category">
+                <video autoplay loop muted playsinline>
+                    <source src="{{ url_for('static', filename='images/AritziaRetail.mp4') }}" type="video/mp4">
+                </video>
+                <div class="category-text">Boutiques</div>
+            </a>
+            <a href="link-to-page-3.html" class="category">
+                <video autoplay loop muted playsinline>
+                    <source src="{{ url_for('static', filename='images/AritziaFood.mp4') }}" type="video/mp4">
+                </video>
+                <div class="category-text">A-OK Cafes</div>
+            </a>
+    </div>
+    </div>
+</body>
+</html>

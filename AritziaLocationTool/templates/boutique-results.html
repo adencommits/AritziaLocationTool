@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribution Centres</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<header class="my-info">
+    <div class="my-info__text">
+        Made by Aden Ahmed | aahmed@aritzia.com
+    </div>
+</header>
+<body id="retail-page">
+    <div class="background-video">
+        <video autoplay loop muted>
+            <source src="{{ url_for('static', filename='images/AritziaRetail.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('views.home') }}">
+                <img src="{{ url_for('static', filename='images/Aritzia.png') }}" alt="Aritzia Logo" class="logo__img">
+            </a>
+        </div>
+        <nav class="nav">
+            <a href="{{ url_for('views.distribution_centres') }}" class="nav__link">For Distribution Centres</a>
+            <a href="{{ url_for('views.boutiques') }}" class="nav__link">For Boutiques</a>
+            <a href="#" class="nav__link">For A-OK Cafes</a>
+        </nav>
+    </header>
+    <div class="page-label">
+        Retail Stores
+    </div>
+    <div class="content">
+        <div class="wrapper">
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head1">
+                <label for="collapsible-head1">How Does This Work?</label>
+                <div class="collapsible-text">
+                    <h2>For Aritzia Boutiques</h2>
+                    <p>
+                        This tool serves as a crucial resource in your decision-making process when you're
+                        considering a new retail location for an Aritzia, Babaton, TNA, Wilfred, or Reigning Champs .
+                        By leveraging insights driven by data, it provides you with vital information that enables
+                        you to make an informed and strategic decision. Using a generative AI model, this program can
+                        make a comprehensive and efficient analysis, enabling strategic decicion-making that saves both
+                        time and money by optimizing processes and reducing manual effort.
+                    </p>
+                </div>
+            </div>
+            <div class="collapsible">
+                <input type="checkbox" id="collapsible-head2">
+                <label for="collapsible-head2">What Do We Hope To Achieve?</label>
+                <div class="collapsible-text">
+                    <h2>Strategic Clarity</h2>
+                    <p>
+                        This platform is designed to illuminate the overarching objectives guiding Aritzia's
+                        strategic decision-making process. By articulating aspirations and desired outcomes,
+                        we establish a clear roadmap for success. Wheather aiming to optimize operational
+                        efficiency, enhance customer and employee satisfaction, or drive sustainable growth
+                        in the retail landscape, defining our goals empower us to align strategies, prioritize
+                        initiatives, and measure progress effectively. This tool can help us explore Aritzia's
+                        mission, vision, and strategic objectives to understand the transformative impact we
+                        aim to achieve.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <div id="instruction">
+                To Begin, Select A Point On The Map.
+            </div>
+            <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
+            <div id="map"></div>
+            <div id="savedLocation" style="background-color: white; padding: 10px;"></div>
+            <a href="#results" class="get-started">Get Started</a>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEVMMBIjhk05WmXezmIlrBlg7IuhT3vzg&callback=initMap&libraries=places"
+                type="text/javascript"></script>
+        </div>
+    </div>
+<div class="location-results">
+    <div id="results">
+        <div class="results-title">
+            <h2>Results</h2>
+        </div>
+        <div class="results-container">
+            <div class="result-item-competitors">
+                <h3>Competitors</h3>
+                {% for competitor, stores in data.Competitors.items() %}
+                    <div class="competitor-box">
+                        <h4>{{ competitor }}</h4>
+                        {% for store in stores %}
+                            <div class="store-info">
+                                <p>Name: {{ store.Name }}</p>
+                                <p>Address: {{ store.Address }}</p>
+                                <p>Distance: {{ store.Distance }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+
+        <div class="result-item-busstops">
+            <h3>Public Bus Stops</h3>
+            {% for stop, distance in data['Public Bus Stops'] %}
+                <p>Bus Stop: {{ stop }}, Distance: {{ distance }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="result-item-traffic">
+            <h3>Foot Traffic Density</h3>
+            <p>{{ data['Foot Traffic Density'] }}</p>
+        </div>
+
+        <div class="results-container">
+            <div class="result-item-coordinates">
+                <h3>Coordinates</h3>
+                <p>Latitude: {{ data.Coordinates.latitude }}</p>
+                <p>Longitude: {{ data.Coordinates.longitude }}</p>
+            </div>
+
+        <div class="result-item-crime">
+            <h3>Safety & Security Data</h3>
+            <p>Selected Area: {{ data['Safety & Security Data']['Neighborhood'] }}</p>
+            <p>Total Crimes in 2023: {{ data['Safety & Security Data']['Total Crimes in 2023'] }}</p>
+            <p>Population in 2023: {{ data['Safety & Security Data']['Population in 2023'] }}</p>
+            <p>Crime Rate in 2023 per 100,000 people: {{ data['Safety & Security Data']['Crime Rate in 2023 per 100,000 people'] }}</p>
+        </div>
+
+        <div class="result-item-ai">
+            <h3>AI Analysis</h3>
+            <p>{{ ai_prompt | safe }}</p>
+        </div>
+        </div>
+    </div>
+
+        </div>
+
+    <script src="/static/distribution-centres.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</div>
+</body>
+</html>

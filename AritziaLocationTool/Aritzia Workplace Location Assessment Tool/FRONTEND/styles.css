@@ -1,0 +1,233 @@
+/* Resetting Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+.my-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    color: white
+}
+
+
+/* Global Styles */
+body {
+    font-family: "Tahoma", sans-serif;
+    background-color: white;
+    height: 1500px;
+}
+.get-started,
+.get-started:link,
+.get-started:visited,
+.get-started:active {
+    color: white;
+    font-family: "Tahoma", sans-serif;
+    text-decoration: none;
+    font-size: 1.3rem;
+    margin-left: 35px;
+    position: relative; /* Add relative positioning */
+    overflow: hidden; /* Hide overflowing content */
+    transition: color 0.5s ease-in-out; /* Add color transition */
+}
+
+.background-video {
+    position: absolute; /* Change from fixed to absolute */
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
+    max-height: 100vh; 
+}
+
+.content-container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh; /* New property */
+}
+
+
+.background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.navbar {
+    height: 124px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    position: relative;
+    z-index: 2; /* New property */
+}
+
+
+.navbar:hover {
+    background-color: white;
+}
+
+.navbar:hover .logo__img {
+    filter: invert(0%);
+}
+
+.logo {
+    width: auto;
+    margin-left: 30px;
+}
+
+.logo__img {
+    height: 100px;
+    width: auto;
+    filter:invert(100%)
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+    position: relative; /* Set position to relative */
+    top: -5px; /* Move nav links up by 20 pixels */
+}
+
+.nav__link {
+    color: white;
+    text-decoration: none;
+    margin-right: 30px; 
+    font-size: 12;
+
+}
+
+.navbar:hover .nav__link {
+    color: black;
+}
+
+.nav__link:hover {
+    text-decoration: underline;
+}
+
+
+/* Media query for screens smaller than 600px */
+@media screen and (max-width: 600px) {
+    .navbar {
+        height: 100px;
+    }
+
+    .logo__img {
+        height: 50px;
+    }
+
+    .nav__link {
+        font-size: 10px;
+        color: white
+    }
+}
+
+/* Media query for screens smaller than 400px */
+@media screen and (max-width: 400px) {
+    .navbar {
+        height: 80px;
+    }
+
+    .logo__img {
+        height: 40px;
+    }
+
+    .nav__link {
+        font-size: 8px;
+    }
+}
+
+.big-title {
+    font-size: 50px;
+    font-family: "Tahoma",sans-serif;
+    color: white;
+    margin-top: 290px;
+    margin-left: 30px;
+}
+
+.get-started {
+    margin-top: 5px;
+    --accent-color: white;
+    color: white
+}
+
+.get-started {
+    color: white;
+    font-family: "Tahoma", sans-serif;
+    text-decoration: none;
+    font-size: 1.3rem;
+    margin-left: 35px;
+    position: relative; /* Add relative positioning */
+    overflow: hidden; /* Hide overflowing content */
+    transition: color 0.5s ease-in-out; /* Add color transition */
+}
+
+
+.get-started::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Adjust transition duration and timing function */
+    z-index: -1;
+}
+
+.get-started:hover::after {
+    transform: scaleY(1);
+}
+
+.get-started:hover {
+    color: black;
+}
+
+.categories-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 450px auto 0; /* Increase top margin */
+    gap: 5px; /* Add a gap between the flex items */
+}
+
+.category {
+    position: relative; /* Add relative positioning */
+    width: 1000px; /* Increase the width of the rectangles */
+    height: 500px; /* Set a fixed height */
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-decoration: none;
+    margin: 0; /* Remove margin */
+    transition: transform 0.3s ease-in-out; /* Add a transition to make the scaling smooth */
+}
+
+.category-text {
+    position: absolute; /* Position the text absolutely */
+    top: 10px; /* Position the text 10px from the bottom */
+    left: 10px; /* Position the text 10px from the left */
+    color: white; /* Change the text color to white */
+    font-size: 1.5em; /* Adjust the font size */
+}
+
+.category img {
+    width: 100%; /* Set the width of the image to 100% of the .category element */
+    height: 100%; /* Set the height of the image to 100% of the .category element */
+    object-fit: cover; /* Resize the image to cover the .category element, while maintaining its aspect ratio */
+}
+
+.category:hover {
+    transform: scale(1.05); /* Scale the rectangle up to 105% */
+}

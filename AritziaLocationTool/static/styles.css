@@ -1,0 +1,644 @@
+/* Resetting Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+html {
+    scroll-behavior: smooth;
+}
+.my-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    color: white
+}
+
+
+
+body#main-page {
+    font-family: "Tahoma", sans-serif;
+    background-color: white;
+    height: 2100px;
+}
+
+body#distribution-centre-page {
+    font-family: "Tahoma", sans-serif;
+    background-color: white;
+    height: 959px;
+}
+
+body#retail-page {
+    font-family: "Tahoma", sans-serif;
+    background-color: white;
+    height: 1600px;
+}
+
+body#distribution-centre-results-page {
+    font-family: "Tahoma", sans-serif;
+    background-color: white;
+    height: 2500px;
+}
+
+.get-started,
+.get-started:link,
+.get-started:visited,
+.get-started:active {
+    color: white;
+    font-family: "Tahoma", sans-serif;
+    text-decoration: none;
+    font-size: 1.3rem;
+    margin-left: 35px;
+    position: relative; /* Add relative positioning */
+    overflow: hidden; /* Hide overflowing content */
+    transition: color 0.5s ease-in-out; /* Add color transition */
+}
+
+.background-video {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Use 100vw to cover the full viewport width */
+    height: 100vh; /* Set height to 100vh */
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content-container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh; /* New property */
+}
+
+
+.background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.navbar {
+    height: 124px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    position: relative;
+    z-index: 2; /* New property */
+}
+
+
+.navbar:hover {
+    background-color: white;
+}
+
+.navbar:hover .logo__img {
+    filter: invert(0%);
+}
+
+.logo {
+    width: auto;
+    margin-left: 30px;
+}
+
+.logo__img {
+    height: 100px;
+    width: auto;
+    filter:invert(100%)
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+    position: relative; /* Set position to relative */
+    top: -5px; /* Move nav links up by 20 pixels */
+}
+
+.nav__link {
+    color: white;
+    text-decoration: none;
+    margin-right: 30px;
+    font-size: 12;
+
+}
+
+.navbar:hover .nav__link {
+    color: black;
+}
+
+.nav__link:hover {
+    text-decoration: underline;
+}
+
+
+/* Media query for screens smaller than 600px */
+@media screen and (max-width: 600px) {
+    .navbar {
+        height: 100px;
+    }
+
+    .logo__img {
+        height: 50px;
+    }
+
+    .nav__link {
+        font-size: 10px;
+        color: white
+    }
+}
+
+/* Media query for screens smaller than 400px */
+@media screen and (max-width: 400px) {
+    .navbar {
+        height: 80px;
+    }
+
+    .logo__img {
+        height: 40px;
+    }
+
+    .nav__link {
+        font-size: 8px;
+    }
+}
+
+.big-title {
+    font-size: 50px;
+    font-family: "Tahoma",sans-serif;
+    color: white;
+    margin-top: 290px;
+    margin-left: 30px;
+}
+
+.get-started {
+    margin-top: 5px;
+    --accent-color: white;
+    color: white
+}
+
+.get-started {
+    color: white;
+    font-family: "Tahoma", sans-serif;
+    text-decoration: none;
+    font-size: 1.3rem;
+    margin-left: 35px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.5s ease-in-out;
+}
+
+
+.get-started::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+}
+
+.get-started:hover::after {
+    transform: scaleY(1);
+}
+
+.get-started:hover {
+    color: black;
+}
+
+.categories-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 850px;
+    gap: 5px;
+}
+
+.category {
+    position: relative;
+    width: 1000px;
+    height: 1111px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-decoration: none;
+    margin: 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.category-text {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 1.5em;
+}
+
+.category img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category:hover {
+    transform: scale(1.05);
+}
+
+.dropdown {
+    max-width: fit-content;
+    margin-left: auto; margin-right: auto;
+    margin-top: 100px;
+}
+
+.category video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category:hover {
+    transform: scale(1.05);
+}
+
+.page-label {
+    padding-top: 150px;
+    margin-left: 30px;
+    font-size: 4rem;
+    transition: padding-top 0.3s ease-in-out;
+    color: white
+}
+
+.content {
+    margin-left: 30px;
+    }
+
+.wrapper {
+    display: block;
+    margin-top: 5px;
+    justify-content: left;
+    width: 50%;
+}
+
+.collapsible {
+    max-width: 600px;
+    overflow: hidden;
+    font-weight: 500;
+    clear:both;
+    display: block;
+    margin-bottom: -30px;
+}
+
+.collapsible input {
+    display: none;
+}
+
+.collapsible label {
+    position: relative;
+    font-weight: 600;
+    background: #fff;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0, .1)rgba(0, 0, 0, 0.1), 0 4px 11px 0 rgba(0,0,0,.08);
+    color: black;
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 15px;
+    z-index: 1;
+
+}
+.collapsible label:after {
+    content: "";
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 18px;
+    height: 18px;
+    background: url(images/arrow.svg) no-repeat 0 0;
+    transition: all 0.3s ease;
+}
+
+.collapsible input:checked + label:after {
+    transform: rotate(90deg);
+}
+
+.collapsible-text {
+    max-height: 1px;
+    overflow: hidden;
+    line-height: 1.4;
+    position: relative;
+    top: -100%;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+
+
+}
+
+.collapsible input:checked ~ .collapsible-text {
+    max-height: 300px;
+    padding-bottom: 25px;
+    background: #fff;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0, .1)rgba(0, 0, 0, 0.1), 0 4px 11px 0 rgba(0,0,0,.08);
+    opacity: 1;
+    top: 0;
+    margin-bottom: 40px;
+}
+
+.collapsible-text {
+    margin-bottom: 10px;
+    padding: 15px 15px 0;
+    color: black;
+
+}
+
+.collapsible-text p {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+#instruction {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-right: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#searchInput {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    color: black !important;
+}
+
+#map {
+    height: 600px;
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.map-container {
+    position: relative;
+    width: 50%;
+    margin-top: -250px;
+    margin-right: 30px;
+}
+
+#coordinates {
+    font-size: 20px;
+    color: #333;
+}
+
+
+.savedLocation {
+    font-family: "Tahoma", sans-serif;
+}
+
+.get-started-coordinates {
+    position: absolute;
+    top: 15px;
+    color: white;
+    font-family: "Tahoma", sans-serif;
+    text-decoration: none;
+    font-size: 1.9rem;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.5s ease-in-out;
+}
+
+
+.get-started-coordinates::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+}
+
+.get-started-coordinates:hover::after {
+    transform: scaleY(1);
+}
+
+.get-started-coordinates:hover {
+    color: black;
+}
+
+.location-results {
+    width: 100%;
+    padding-top: 300px; /* Use padding-top instead of margin-top */
+}
+
+.retail-location-results {
+    width: 100%;
+    margin-top: 1300px;
+    margin-left: 30px;
+}
+
+.results-title {
+    font-size: 3rem;
+    margin-top: 50px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.result-item {
+    background-color: black;
+    color: white;
+    gap: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.results-container {
+    display: grid;
+    grid-template-rows: auto; /* Automatically adjust row height */
+    gap: 10px;
+    grid-template-areas:
+        "competitors busstops"
+        "competitors foottraffic"
+        "competitors coordinates"
+        "competitors crimerate"
+        "competitors aianalysis";
+    padding-left: 30px; /* Add padding to the left */
+    padding-right: 30px; /* Add padding to the right */
+}
+
+.result-item-competitors,
+.result-item-busstops,
+.result-item-traffic,
+.result-item-coordinates,
+.result-item-crime,
+.result-item-ai {
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    overflow: auto; /* Ensure box height matches content */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    width: 700px; /* Set width to 700px */
+}
+
+.result-item-competitors {
+    grid-area: competitors;
+}
+
+.result-item-busstops {
+    grid-area: busstops;
+}
+
+.result-item-traffic {
+    grid-area: foottraffic;
+}
+
+.result-item-coordinates {
+    grid-area: coordinates;
+}
+
+.result-item-crime {
+    grid-area: crimerate;
+}
+
+.result-item-ai {
+    grid-area: aianalysis;
+}
+
+.result-item-competitors,
+.result-item-busstops,
+.result-item-traffic,
+.result-item-coordinates,
+.result-item-crime,
+.result-item-ai {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: auto; /* Add this property to make the box only as tall as it needs to be */
+}
+
+.result-item-busstops,
+.result-item-traffic,
+.result-item-coordinates,
+.result-item-crime,
+.result-item-ai {
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.result-item-competitors table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.result-item-competitors th, .result-item-competitors td {
+    border: 1px solid white; /* This will make the table lines white */
+    padding: 8px;
+    text-align: left;
+}
+
+.result-item-competitors th {
+    background-color: white; /* This will make the header background white */
+    color: black; /* This will make the header text black */
+}
+
+.retail-map-section {
+    width: 1200px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+#searchInput {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    color: black !important;
+    padding-left: 20px; /* Add this line */
+}
+
+.get-started-retail {
+    position: absolute;
+    top: 15px;
+    color: white;
+    font-family: "Tahoma", sans-serif;
+    text-decoration: none;
+    font-size: 1.9rem;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.5s ease-in-out;
+}
+
+
+.get-started-retail::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+}
+
+.get-started-retail:hover::after {
+    transform: scaleY(1);
+}
+
+.get-started-retail:hover {
+    color: black;
+}
+
+.competitor-box {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: transparent; /* Changed from #f9f9f9 to transparent */
+}
+
+.store-info {
+    border-top: 1px solid #eee;
+    padding: 8px 0;
+    color: white; /* Ensure text inside is white for visibility */
+}
+
+.store-info:first-child {
+    border-top: none;
+}
